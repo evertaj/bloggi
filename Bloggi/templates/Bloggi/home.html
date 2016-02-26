@@ -1,0 +1,11 @@
+{%  extends "bloggi/base.html" %}
+{% block title %}
+Qrlik!
+{% endblock %}
+{% block content %}
+<h1>Home</h1>
+    {%  for article in articles %}
+        <h4><a href='{% url 'article' article.id %}'>{{ article.title }}</a></h4>
+        <pre>{{ article.get_short }}</pre>
+    {% endfor %}
+{% endblock %}
