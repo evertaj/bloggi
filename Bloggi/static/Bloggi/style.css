@@ -1,7 +1,17 @@
 .main-content{
-    margin-top: 60px;
+    margin-top: 70px;
 }
 
 h4 {
     margin-top: 50px;
+}
+
+.right{
+    float: right !important;
+}
+
+.nav_hello {
+    font-size: 14px;
+    padding-top: 15px;
+    border-bottom: white solid 1px;
 }

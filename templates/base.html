@@ -14,10 +14,10 @@
     <title>{% block title %}{% endblock %} &ndash; Bloggi</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/superhero/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/cyborg/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="{% static 'Bloggi/style.css '%}" rel="stylesheet">
+    <link href="{% static 'Bloggi/style.css ' %}" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -35,19 +35,33 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="{% url 'Home' %}">Bloggi</a>
+          <img style='margin-right: 10px;' src="http://a.deviantart.net/avatars/o/c/ocequa.gif?5"/>
+          <a class="navbar-brand right" href="{% url 'Home' %}">Bloge</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li><a href='{% url 'Home' %}'>Home</a></li>
-              <li><a href='{% url 'Forum' %}'>Forum</a></li>
             <li><a href='{% url 'About' %}'>About</a></li>
+          </ul>
+          <ul class="nav navbar-nav right">
+            {% if request.user.is_authenticated %}
+                <li class = "nav_hello">Hello, {{ user }}!</li>
+                <li><a href='{% url 'auth_logout' %}'>Log out</a></li>
+            {% else %}
+                {% if not 'accounts/login/' in request.get_full_path %}
+                <li class ='right'><a href='{% url 'registration_register' %}'>Register</a></li>
+                <form class="navbar-form right" method="POST" action ='{% url "auth_login" %}'>
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="username" placeholder="username">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="password" placeholder="password">
+                    </div>
+                    <button type="submit" class="btn">Log in</button>
+                </form>
+                {%  endif %}
+            {%  endif %}
           </ul>
         </div><!--/.nav-collapse -->
       </div>

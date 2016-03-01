@@ -7,15 +7,11 @@ def Home(request):
     context = {
         'articles': articles
     }
-    return render(request, 'bloggi/home.html', context)
-
+    return render(request, 'home.html', context)
 
 def About(request):
-    return render(request, 'bloggi/about.html')
-
-def Forum(request):
-    return render(request, 'bloggi/forum.html')
+    return render(request, 'about.html')
 
 def show_article(request, article_id):
     article = get_object_or_404(Article, id=article_id)
-    return render(request, 'bloggi/article.html', {'article': article})
+    return render(request, 'article.html', {'article': article})
