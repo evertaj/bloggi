@@ -1,4 +1,5 @@
 {%  extends "base.html" %}
+{% load i18n %}
 
 {% block title %}
     {{ article.title }}
@@ -8,4 +9,20 @@
     <h2>{{ article.title }}</h2>
     <pre>{{ article.text }}</pre>
 
+        <h3 style = 'color: dodgerblue'>Discuss:</h3>
+        {%  for comment in comments %}
+            {% if comment.comment_for_article == article.id  %}
+                <h5>{{ comment.comment_by }} said:</h5>
+                <pre>{{ comment.comment_text }}</pre>
+            {% endif %}
+        {% endfor %}
+
+    <h4 style = 'color: dodgerblue'>Add a comment:</h4>
+    <form method = 'POST' action = ''>
+        {% csrf_token %}
+        <textarea rows="5" cols="40" class="form-control" name="comment_text"></textarea>
+        <br>
+        <button type="submit" class="btn-primary right">Send</button>
+    </form>
+<br><br><br><br><br><br>
 {% endblock %}

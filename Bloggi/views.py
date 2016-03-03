@@ -1,5 +1,7 @@
 from django.shortcuts import render
-from Bloggi.models import Article
+from django.shortcuts import render_to_response
+
+from Bloggi.models import Article, Comment
 from django.shortcuts import get_object_or_404
 
 def Home(request):
@@ -14,4 +16,5 @@ def About(request):
 
 def show_article(request, article_id):
     article = get_object_or_404(Article, id=article_id)
-    return render(request, 'article.html', {'article': article})
+    comments = Comment.objects.all()
+    return render(request, 'article.html', {'article': article, 'comments':comments})

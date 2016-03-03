@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Bloggi',
     'registration',
-    'crispy_forms'
+    'crispy_forms',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -116,9 +116,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.9/howto/static-files/
-
 STATIC_URL = '/static/'
 
 ACCOUNT_ACTIVATION_DAYS = 7
@@ -126,5 +123,5 @@ REGISTRATION_AUTO_LOGIN = True
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/home/'
 
+COMMENTS_APP = 'threadedcomments'
 
-#CRISPY_TEMPLATE_PACK = 'uni_form'

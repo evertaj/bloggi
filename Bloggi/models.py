@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django import forms
 
 SHORT_TEXT_LEN = 600
 
@@ -16,3 +17,11 @@ class Article(models.Model):
             return self.text[:SHORT_TEXT_LEN]
         else:
             return self.text
+
+class Comment(models.Model):
+    comment_by = models.ForeignKey(User)
+    comment_text = models.TextField()
+    comment_for_article = models.IntegerField()
+
+    def __str__(self):
+        return self.comment_text
