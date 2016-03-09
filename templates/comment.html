@@ -1,7 +1,0 @@
-{%  extends "base.html" %}
-{% block content %}
-    {%  for comment in comments %}
-        <h4>{{ comment.comment_by }} said:</h4>
-        <pre>{{ comment.comment_text }}</pre>
-    {% endfor %}
-{% endblock %}

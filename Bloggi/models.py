@@ -1,6 +1,5 @@
 from django.contrib.auth.models import User
 from django.db import models
-from django import forms
 
 SHORT_TEXT_LEN = 600
 
@@ -16,12 +15,17 @@ class Article(models.Model):
         if len(self.text) > SHORT_TEXT_LEN:
             return self.text[:SHORT_TEXT_LEN]
         else:
-            return self.text
+            return self
+
+    def comments_count(self):
+        p = Comment.objects.all().filter(article_id = self.id)
+        return len(p)
 
 class Comment(models.Model):
-    comment_by = models.ForeignKey(User)
-    comment_text = models.TextField()
-    comment_for_article = models.IntegerField()
+    user = models.ForeignKey(User, null=True, blank=True)
+    text = models.TextField(blank=True)
+    article = models.ForeignKey(Article, null=True, blank=True)
+    approved = models.NullBooleanField()
 
     def __str__(self):
-        return self.comment_text
+        return self.text

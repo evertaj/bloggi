@@ -7,5 +7,6 @@
     {%  for article in articles %}
         <h4><a href='{% url 'article' article.id %}'>{{ article.title }}</a></h4>
         <pre>{{ article.get_short }}<a href='{% url 'article' article.id %}'>...</a></pre>
+        <h6><a href='{% url 'article' article.id %}'><img src = 'http://artburo365.ru/wp-content/themes/sevenwonders/images/icons/i_comment.png'> {{ article.comments_count }} comments</a></h6>
     {% endfor %}
 {% endblock %}

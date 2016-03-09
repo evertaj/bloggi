@@ -3,4 +3,7 @@
   <data-source name="Django default" uuid="9e29a170-07e3-494c-bd8f-1f8e5f822fdf">
     <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
   </data-source>
+  <data-source name="Sqlite (Xerial) - mybase" uuid="e0e6fe9c-4bf4-4f97-b7e0-ef309dcfe8d1">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
 </component>

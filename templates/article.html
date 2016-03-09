@@ -1,5 +1,6 @@
 {%  extends "base.html" %}
 {% load i18n %}
+{% load crispy_forms_tags %}
 
 {% block title %}
     {{ article.title }}
@@ -11,18 +12,17 @@
 
         <h3 style = 'color: dodgerblue'>Discuss:</h3>
         {%  for comment in comments %}
-            {% if comment.comment_for_article == article.id  %}
-                <h5>{{ comment.comment_by }} said:</h5>
-                <pre>{{ comment.comment_text }}</pre>
+            {% if comment.article_id == article.id  and comment.approved == 1 %}
+                <h6>{{ comment.user }} said:</h6>
+                <h7>{{ comment.text }}</h7>
             {% endif %}
         {% endfor %}
 
     <h4 style = 'color: dodgerblue'>Add a comment:</h4>
-    <form method = 'POST' action = ''>
+    <form method = 'POST' action = '{% url "create_comment" article.id %}'>
         {% csrf_token %}
-        <textarea rows="5" cols="40" class="form-control" name="comment_text"></textarea>
-        <br>
-        <button type="submit" class="btn-primary right">Send</button>
+        {{ form.as_p }}
+        <button type="submit" class="btn right">Send</button>
     </form>
 <br><br><br><br><br><br>
 {% endblock %}

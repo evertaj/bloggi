@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="2900743499">
+  <component name="DataSourceManagerImpl" format="xml" hash="1934166406">
     <data-source source="LOCAL" name="Django default" uuid="9e29a170-07e3-494c-bd8f-1f8e5f822fdf">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
@@ -11,6 +11,12 @@
       <explain-plan-config>
         <provider>com.intellij.database.plan.ExplainPlanProvider.NullExplainPlanProvider</provider>
       </explain-plan-config>
+    </data-source>
+    <data-source source="LOCAL" name="Sqlite (Xerial) - mybase" uuid="e0e6fe9c-4bf4-4f97-b7e0-ef309dcfe8d1">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/../Blog\mybase</jdbc-url>
     </data-source>
   </component>
 </project>
