@@ -1,6 +1,5 @@
 {%  extends "base.html" %}
 {% load i18n %}
-{% load crispy_forms_tags %}
 
 {% block title %}
     {{ article.title }}
@@ -8,13 +7,13 @@
 {% block content %}
 
     <h2>{{ article.title }}</h2>
-    <pre>{{ article.text }}</pre>
+    <pre class="pre-scrollable">{{ article.text }}</pre>
 
-        <h3 style = 'color: dodgerblue'>Discuss:</h3>
+        <br><h3 style = 'color: dodgerblue'>Discuss:</h3>
         {%  for comment in comments %}
             {% if comment.article_id == article.id  and comment.approved == 1 %}
-                <h6>{{ comment.user }} said:</h6>
-                <h7>{{ comment.text }}</h7>
+                <h6 style = 'margin-left: 30px;'>{{ comment.user }} said:</h6>
+                <h7 style = 'margin-left: 50px;'>{{ comment.text }}</h7>
             {% endif %}
         {% endfor %}
 
@@ -22,7 +21,7 @@
     <form method = 'POST' action = '{% url "create_comment" article.id %}'>
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="btn right">Send</button>
+        <button type="submit" class="btn">Send</button>
     </form>
-<br><br><br><br><br><br>
+<br style="clear: both;"><br><br><br><br><br>
 {% endblock %}

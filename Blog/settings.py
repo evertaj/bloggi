@@ -37,8 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Bloggi',
-    'registration',
-    'crispy_forms'
+    'registration'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -50,6 +49,8 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    #'Bloggi.middleware.middleware.ReferMiddleware',
+    #'Bloggi.middleware.middleware.SQLLogToConsoleMiddleware',
 ]
 
 ROOT_URLCONF = 'Blog.urls'
@@ -65,6 +66,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'Bloggi.context_processors.context_processor.settings_processor',
             ],
         },
     },
@@ -100,9 +102,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-DISQUS_API_KEY = 'FOOBARFOOBARFOOBARFOOBARFOOBARF'
-DISQUS_WEBSITE_SHORTNAME = 'foobar'
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
@@ -122,6 +121,4 @@ ACCOUNT_ACTIVATION_DAYS = 7
 REGISTRATION_AUTO_LOGIN = True
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/home/'
-
-COMMENTS_APP = 'threadedcomments'
 

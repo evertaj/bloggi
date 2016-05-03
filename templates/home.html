@@ -3,10 +3,23 @@
     Qrlik!
 {% endblock %}
 {% block content %}
-<h1>Home</h1>
+    <h1>Home</h1>
+
     {%  for article in articles %}
-        <h4><a href='{% url 'article' article.id %}'>{{ article.title }}</a></h4>
-        <pre>{{ article.get_short }}<a href='{% url 'article' article.id %}'>...</a></pre>
-        <h6><a href='{% url 'article' article.id %}'><img src = 'http://artburo365.ru/wp-content/themes/sevenwonders/images/icons/i_comment.png'> {{ article.comments_count }} comments</a></h6>
+        {% if article.approved == 1 %}
+            <h4><a href='{% url 'Article' article.id %}'>{{ article.title }}</a></h4>
+            <pre>{{ article.get_short }}<a href='{% url 'Article' article.id %}'>...</a></pre>
+            <h6><a href='{% url 'Article' article.id %}'><img src = 'http://artburo365.ru/wp-content/themes/sevenwonders/images/icons/i_comment.png'> {{ article.comments_count }} comment{{ article.lang }}</a></h6>
+        {% endif %}
     {% endfor %}
+<br>
+    {% if request.user.is_authenticated %}
+    <h5>002 абонент "Предложи новость"</h5>
+        <form method = 'POST' action = '{% url "create_article" %}'>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn right">Send</button>
+        </form>
+    {%  endif %}
+    <br><br><br><br><br><br>
 {% endblock %}

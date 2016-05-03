@@ -7,12 +7,21 @@ h4 {
 }
 
 .right{
-    float: right !important;
+    float: right;
+}
+
+.left{
+    float: left;
 }
 
 .nav_hello {
     font-size: 14px;
     padding-top: 15px;
     border-bottom: white solid 1px;
+}
+
+pre {
+    white-space: initial;
+    word-break: keep-all;
 }
 
